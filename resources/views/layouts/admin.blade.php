@@ -18,10 +18,10 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
          <!-- Sweetalert2 -->
-      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11">
-      
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+         <!-- chartts -->
 
-    </script>
+      <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
         <!-- Styles -->
         @livewireStyles
@@ -81,6 +81,8 @@
         <script>
 
             Swal.fire(@json(session('swal')));
+
+            
 
             </script>
 

@@ -200,4 +200,13 @@ public function edit(Post $post)
 
 
     }
+    public function dashboard()
+    {
+        // Obtener todos los posts
+        $posts = Post::all();
+    
+        // Pasar los posts a la vista
+        return view('admin.dashboard', compact('posts'));
+    }
+    
 }

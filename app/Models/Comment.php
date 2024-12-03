@@ -25,4 +25,6 @@ class Comment extends Model
         return $this->morphMony(Image::class, 'imageable');
     }
 
+
+
 }

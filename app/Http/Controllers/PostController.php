@@ -18,6 +18,7 @@ class PostController extends Controller
         //      now()->addMinutes(5)
         //  );
     }
+   
 
     public function show(Post $post)
     {

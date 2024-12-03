@@ -86,7 +86,12 @@ public function comments(){
     return $this->morphMany(Comment::class, 'commentable');
 
     }
-
+   
+    public function comentarios()
+    {
+        return $this->hasMany(Question::class); 
+    }
+    
 
     //Relacion muchos a muchos polimorfica
     public function tags(){
@@ -98,6 +103,8 @@ public function comments(){
 
         return $this->morphMany(Question::class, 'questionable');
     }
+
+    
 
 
    public function scopeFilter($query, $filters){
