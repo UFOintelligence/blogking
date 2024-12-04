@@ -9,9 +9,10 @@
 @if ($dashboard->isNotEmpty()) <!-- Fixed the typo here from $dahboard to $dashboard -->
 
 
-<div class="grid grid-cols- md:grid-cols-4 gap-6">
+<div class="grid grid-cols- md:grid-cols-3 gap-6">
     <!-- Usuarios -->
-    <div class="max-w-sm w-full bg-gradient-to-br from-blue-500 to-purple-600 text-white rounded-lg shadow-lg p-6">
+    <div class="max-w-sm w-full bg-gradient-to-br from-blue-500 to-purple-600
+     text-white rounded-lg shadow-lg p-3 transition-transform hover:scale-105 duration-300 relative overflow-hidden">
         <div class="flex justify-between items-center mb-5">
             <div class="flex items-center gap-3">
                 <div class="p-3 bg-white rounded-full">
@@ -22,9 +23,11 @@
             <span class="text-2xl font-bold">{{ $users->count() }}</span>
         </div>
     </div>
+    
 
     <!-- Comentarios -->
-    <div class="max-w-sm w-full bg-gradient-to-br from-green-500 to-teal-600 text-white rounded-lg shadow-lg p-6">
+    <div class="max-w-sm w-full bg-gradient-to-br from-green-500 to-teal-600
+     text-white rounded-lg shadow-lg p-3   transition-transform hover:scale-105 duration-300 relative overflow-hidden">
         <div class="flex justify-between items-center mb-5">
             <div class="flex items-center gap-3">
                 <div class="p-3 bg-white rounded-full">
@@ -37,7 +40,8 @@
     </div>
 
     <!-- Posts -->
-    <div class="max-w-sm w-full bg-gradient-to-br from-red-500 to-orange-600 text-white rounded-lg shadow-lg p-6">
+    <div class="max-w-sm w-full bg-gradient-to-br from-red-500
+     to-orange-600 text-white rounded-lg shadow-lg p-3  transition-transform hover:scale-105 duration-300 relative overflow-hidden">
         <div class="flex justify-between items-center mb-5">
             <div class="flex items-center gap-3">
                 <div class="p-3 bg-white rounded-full">
@@ -85,7 +89,7 @@
 
     <!-- Banner -->
     <div class="banner">
-        <ul class="space-y-8  bg-white shadow-lg rounded-lg  transition-transform hover:scale-105 duration-300 relative overflow-hidden">
+        <ul class="  bg-white shadow-lg rounded-lg  transition-transform hover:scale-105 duration-300 relative overflow-hidden">
             @foreach ($dashboard as $panel)
                 <li class="grid grid-cols-1 lg:grid-cols-2 gap-4">
                     <div>
@@ -112,7 +116,9 @@
 {{-- Los 10 post con mas comentario --}}
 
 
-<div class="w-full mt-4 max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+<div class="w-full mt-4 max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow-lg sm:p-8
+ dark:bg-gray-800 dark:border-gray-700
+     transition-transform hover:scale-105 duration-300 relative overflow-hidden">
     
     <div class="flex items-center justify-between mb-4">
         <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Los 10 post con màs comentarios</h5>

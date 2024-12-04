@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Dashboard;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +25,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        //compartir la variable globalmente
+        $dashboard = Dashboard::first(); // Ajusta según tu lógica
+        view()->share('dashboard', $dashboard);
     }
 }

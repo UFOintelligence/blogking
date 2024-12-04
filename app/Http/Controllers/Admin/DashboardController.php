@@ -8,6 +8,7 @@ use App\Models\Post;
 use App\Models\Question;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardController extends Controller
 {
@@ -66,36 +67,7 @@ public function create()
     }
     
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $request->validate([
-            'title_logo' => 'required|string|max:255',
-            'image_logo' => 'required|image',
-            'image_banner' => 'required|image',
-        ]);
-        
-        // Guardar el logo
-        $imagePath_logo = $request->file('image_logo')->store('dashboards', 'public');
-        
-        // Guardar el banner
-        $imagePath_banner = $request->file('image_banner')->store('dashboards', 'public');
-        
-        // Crear el dashboard con logo y banner
-        Dashboard::create([
-            'title_logo' => $request->title_logo,
-            'image_logo' => $imagePath_logo,
-            'image_banner' => $imagePath_banner,
-        ]);
-        
-        return redirect()->route('admin.dashboard.index')->with('success', 'Dashboard creado exitosamente.');
-    }
-    
+
     
     /**
      * Display the specified resource.
@@ -128,10 +100,43 @@ public function create()
      * @param  \App\Models\Dashboard  $dashboard
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Dashboard $dashboard)
+    public function update(Request $request, $id)
     {
-        //
+        $dashboard = Dashboard::findOrFail($id);
+    
+        // Validar las imágenes
+        $request->validate([
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // 2MB máximo
+            'banner' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+    
+        // Subir el logo si está presente
+        if ($request->hasFile('logo')) {
+            $logoPath = $request->file('logo')->store('logos', 'public');
+            $dashboard->image_path_logo = $logoPath;
+        }
+    
+        // Subir el banner si está presente
+        if ($request->hasFile('banner')) {
+            $bannerPath = $request->file('banner')->store('banners', 'public');
+            $dashboard->image_path_banner = $bannerPath;
+        }
+    
+        // Actualizar otros campos si es necesario
+        $dashboard->title_logo = $request->input('title_logo', $dashboard->title_logo);
+    
+        $dashboard->save();
+
+        session()->flash('swal', [
+            'icon' => 'success',
+            'title' => '¡Bien hecho!',
+            'text' => 'El dashboard fuè actualizado corretamente'
+        ]);
+    
+        return redirect()->route('admin.dashboard.index');
     }
+    
+
 
     /**
      * Remove the specified resource from storage.

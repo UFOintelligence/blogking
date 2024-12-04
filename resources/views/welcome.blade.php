@@ -2,7 +2,7 @@
     
     <!-- Imagen de encabezado -->
     <figure class="mb-12">
-        <img src="{{ asset('img/home/9.jpg') }}" class="w-full aspect-[3/1] object-cover object-center">
+        <img src="{{ asset('storage/' . $dashboard->image_path_banner) }}" class="w-full aspect-[3/1] object-cover object-center">
     </figure>
 
     <!-- Sección principal -->

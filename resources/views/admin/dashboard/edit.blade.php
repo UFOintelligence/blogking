@@ -12,6 +12,7 @@
     @csrf
     @method('PUT')
 
+
     <x-validation-errors class="mb-4" />  
     <div class="dashboard grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
     
@@ -33,7 +34,7 @@
             
                                 <i class="fa-solid fa-camera mr-2"></i>
                                 Actualizar Imagen
-                                <input type="file" accept="image/*" name="image" class="hidden"
+                                <input type="file" accept="image/*" name="logo" class="hidden"
                                     onchange="previewImageLogo(event, '#imgPreviewLogo')">
             
                             </label>
@@ -45,8 +46,8 @@
                                 Nombre
                             </x-label>
                 
-                            <x-input class="w-full" placeholder="Escriba el titulo del banner" name="title"
-                                value="{{ old('title_banner', $dashboard->title_logo ) }}"></x-input>
+                            <x-input class="w-full" placeholder="Escriba el titulo del logo" name="title_logo"
+                                value="{{ old('title_logo', $dashboard->title_logo ) }}"></x-input>
                         </div>
                             <div class=" mt-2">
                                 
@@ -75,7 +76,7 @@
             
                                 <i class="fa-solid fa-camera mr-2"></i>
                                 Actualizar Imagen
-                                <input type="file" accept="image/*" name="image" class="hidden"
+                                <input type="file" accept="image/*" name="banner" class="hidden"
                                     onchange="previewImageBanner(event, '#imgPreviewBanner')">
             
                             </label>
